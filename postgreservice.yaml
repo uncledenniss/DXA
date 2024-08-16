@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    tags.datadoghq.com/env: 'dev'
+    tags.datadoghq.com/service: 'postgres'
+  annotations:
+    ad.datadoghq.com/service.check_names: '["postgres"]'
+    ad.datadoghq.com/service.init_configs: '[{}]'
+    ad.datadoghq.com/service.instances: |
+      [
+        {
+          "dbm": true,
+          "host": "datadogpostgres.postgres.database.azure.com",
+          "port": 5432,
+          "username": "datadog@datadogpostgres.postgres.database.azure.com",
+          "password": "*********",
+          "ssl": "require",
+          "azure": {
+            "deployment_type": "single",
+            "fully_qualified_domain_name": "datadogpostgres.postgres.database.azure.com"
+          }
+        }
+      ]
+spec:
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+    name: postgres

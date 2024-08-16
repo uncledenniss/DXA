@@ -1,0 +1,8 @@
+datadog:
+  apiKey: "************"
+  appKey: "************"
+  apm:
+    enabled: true
+  hostname: "aks-agentpool-31600862-vmss000000"
+  logs:
+    enabled: true

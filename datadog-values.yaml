@@ -1,0 +1,33 @@
+datadog:
+  apiKey: ************
+  appKey: ************
+
+  # Required as of Agent 7.35. See Kubelet Certificate note below.
+  kubelet:
+    tlsVerify: false
+
+  # Existing AKS provider configuration
+  providers:
+    aks:
+      enabled: true
+
+  # PostgreSQL monitoring setup
+  clusterAgent:
+    confd:
+      postgres.yaml:
+        cluster_check: true
+        init_config: {}
+        instances:
+          - dbm: true
+            host: datadogpostgres.postgres.database.azure.com
+            port: 5432
+            username: 'datadog@datadogpostgres.postgres.database.azure.com'
+            password: 'Startup12345'
+            ssl: 'require'
+            azure:
+              deployment_type: 'Single Server'
+              fully_qualified_domain_name: datadogpostgres.postgres.database.azure.com
+
+  # Enable Cluster Checks Runner
+  clusterChecksRunner:
+    enabled: true
