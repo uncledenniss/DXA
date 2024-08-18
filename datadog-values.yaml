@@ -22,7 +22,7 @@ datadog:
             host: datadogpostgres.postgres.database.azure.com
             port: 5432
             username: 'datadog@datadogpostgres.postgres.database.azure.com'
-            password: 'Startup12345'
+            password: '**********'
             ssl: 'require'
             azure:
               deployment_type: 'Single Server'
